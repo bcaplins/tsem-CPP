@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1507126458 source:c:\users\1tem\documents\1tem_control\tem_image_acquisition_softwaretriggered\main.cpp
+	<iostream>
+	<string>
+	<Windows.h>
+	"uEye.h"
+
+1418073106 c:\program files\ids\ueye\develop\include\ueye.h
+	<unistd.h>
+	<wchar.h>
+	<stdint.h>
+	<windows.h>
+

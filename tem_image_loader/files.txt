@@ -1,0 +1,4 @@
+white.bmp
+black.bmp
+white.bmp
+black.bmp

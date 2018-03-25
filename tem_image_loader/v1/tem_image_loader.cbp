@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tem_image_loader" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/tem_image_loader" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="RBTlarge.bmp" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/tem_image_loader" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="C:/Users/1TEM/Desktop/CImg-1.5.7" />
+			<Add directory="C:/Program Files/ALP-4.2/ALP-4.2 basic API" />
+		</Compiler>
+		<Linker>
+			<Add library="C:\Program Files\ALP-4.2\ALP-4.2 basic API\alpV42basic.lib" />
+			<Add directory="C:/Users/1TEM/Desktop/gdi extract/asms/10/msft/windows/gdiplus" />
+		</Linker>
+		<ExtraCommands>
+			<Add after='cmd /c copy &quot;C:\Program Files\ALP-4.2\ALP-4.2 basic API\alpV42basic.dll&quot; $(TARGET_OUTPUT_DIR)' />
+		</ExtraCommands>
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,78 @@
+MIRROR CONTROL
+==============
+
+To control the mirror within Octave/MATLAB, start it like this:
+
+	proc_id = popen('tem_image_loader.exe', 'w');
+
+This will activate the image loader program in a mode that waits
+for file names of bitmap (.bmp) images to be sent to it. The proc_id
+variable stores the process ID needed for the later commands.
+
+To send an image file name to the program, use this command:
+
+	fputs(proc_id, [full_path_to_file_name "\n"]);
+
+The newline character (double-quoted "\n" in Octave,
+single-quoted '\n' in MATLAB) at the end is mandatory.
+
+The full_path_to_file_name should include the full directory to the file, 
+i.e., C:\dir1\dir2\pic.bmp.
+
+
+
+In the example tem_script.m, the uigetfile() function returns the file name
+and path as separate variables.
+
+	[dmd_files, dmd_path, ~] = uigetfile('*.bmp', 'Window Title', 'MultiSelect', 'on');
+
+'*.bmp' filters for bitmap files
+'MultiSelect', 'on' allows for multiple files to be selected.
+
+To create a full path to a file, concatenate the path and file name.
+
+	full_path = [dmd_path dmd_file{index}] % Curly brackets since the file list is a cell
+										   % array
+
+
+
+
+tem_image_loader.exe Stand-Alone Operation:
+
+If you just want to put an image on the mirror from the command line,
+just run tem_image_loader.exe followed by a list of images.
+
+	tem_image_loader.exe image1.bmp image2.bmp ...
+
+Pressing enter will iterate through the images and quit after the last one.
+
+If tem_image_loader.exe is started without any arguments, it waits for
+file names to be sent to it on stdin. Press 
+
+
+
+CAMERA CONTROL
+==============
+
+The camera can also be used within Octave/MATLAB. Use the system() command to
+activate it. For example,
+
+	system('tem_image_acquisition.exe --exposure 500 --filename picture.png');
+
+The argument to the system command is a command-line invocation of the program.
+
+The options for the tem_image_acquisition.exe program are
+	--exposure <number> - sets the exposure to <number> milliseconds
+	--gain <number> - sets the gain to <number> (valid range: [0, 100]; default: 0)
+	--filename <text> - saves the image (PNG only) to the given file name
+
+The picture file will be placed in the same directory as the running script unless a 
+full path is given.
+
+For now, the capture program only saves .png picture files. This can be changed if needed.
+
+
+
+For standalone operation, the command is the same except for the system function:
+
+	tem_image_acquisition.exe --exposure 500 --filename picture.png
